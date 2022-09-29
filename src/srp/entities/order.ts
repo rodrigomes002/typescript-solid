@@ -1,5 +1,5 @@
-import { Messaging } from './messaging';
-import { Persistency } from './persistency';
+import { Messaging } from '../services/messaging';
+import { Persistency } from '../services/persistency';
 import { ShoppingCart } from './shopping-cart';
 import { OrderStatus } from './types/order-status';
 
@@ -22,6 +22,7 @@ export class Order {
       return;
     }
 
+    this._orderStatus = 'closed';
     this.messaging.sendMessage(
       `Seu pedido com o total de R$ ${this.cart.total()} foi recebido.`,
     );
