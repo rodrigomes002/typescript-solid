@@ -1,3 +1,4 @@
+import { EnterpriseCustomer, IndividualCustomer } from './entities/customer';
 import { TenPercentDiscount } from './entities/discount';
 import { Messaging } from './services/messaging';
 import { Order } from './entities/order';
@@ -13,7 +14,18 @@ shoppingCart.addItem(new Product('Lápis', 1.59));
 
 const messaging = new Messaging();
 const persistency = new Persistency();
-const order = new Order(shoppingCart, messaging, persistency);
+const individualCustomer = new IndividualCustomer(
+  'Rodrigo',
+  'Gomes',
+  '181.181.181-18',
+);
+const enterpriseCustomer = new EnterpriseCustomer('Rodrigo SA', '999999999999');
+const order = new Order(
+  shoppingCart,
+  messaging,
+  persistency,
+  individualCustomer,
+);
 
 console.log(shoppingCart.getItems());
 console.log(shoppingCart.total());
